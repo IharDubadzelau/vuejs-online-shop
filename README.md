@@ -1,5 +1,10 @@
 # tutorial_online_shop
+```
+1. before compile need to start api data to json server rom the project directory
+...>json-server --watch db.json
 
+Creating a shopping cart, storage vuex. Connecting external from api data from the db.json file
+```
 ## Project setup
 ```
 npm install

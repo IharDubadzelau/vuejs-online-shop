@@ -5,13 +5,17 @@
         <hr>
         <v-catalog />
         <hr>
-        <v-cart />
+        <v-cart
+                v-if="CART.length"
+                :cart_data="CART"
+        />
     </div>
 </template>
 
 <script>
 import vCatalog from './v-catalog';
 import vCart from './v-cart';
+import {mapGetters} from 'vuex'
 
 export default {
     //Имя компонента - обязательный параметр
@@ -22,7 +26,8 @@ export default {
         vCart
     },
     //то что прилетает из родителя
-    props: {},
+    props: {
+    },
     //возращаемые данные этого компонента - персональные данные
     data() {
         return{
@@ -30,7 +35,11 @@ export default {
         }
     },
     //вычислительные св-ва компонента
-    computed: {},
+    computed: {
+        ...mapGetters([
+            'CART'
+        ])
+    },
     //здесь отлавдиваются действия пользователя
     //различные клики, показы модальных окон, скрытие показ элементов, анимации и т.д.
     methods: {},
@@ -39,7 +48,7 @@ export default {
 //--- хуки жизненого цикла ---
     //отрабатывает когда компонент полностью загрузится - один из основных
     mounted() {
-        console.log('hook - mounted');
+        console.log('I: hook - mounted');
     }
 }
 </script>
