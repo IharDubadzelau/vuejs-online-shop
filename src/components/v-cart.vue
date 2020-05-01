@@ -1,6 +1,10 @@
 <template>
     <div class="v-cart">
-        <h1>cart</h1>
+        <router-link :to="{name: 'catalog'}">
+            <div class="v-cart__link_to_cart"> обратно </div>
+        </router-link>
+        <h1>Корзина</h1>
+        <p v-if="!cart_data.length">В корзине нет товаров...</p>
         <v-cart-item
             v-for="(item, index) in cart_data"
             :key="item.article"
@@ -41,6 +45,14 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+    .v-cart {
+        &__link_to_cart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: $padding*2;
+            border: solid 1px #aeaeae;
+        }
+    }
 </style>
