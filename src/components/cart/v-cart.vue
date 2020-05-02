@@ -1,7 +1,7 @@
 <template>
     <div class="v-cart">
         <router-link :to="{name: 'catalog'}">
-            <div class="v-cart__link_to_cart"> обратно </div>
+            <div class="v-cart__link_to_cart rds"> обратно </div>
         </router-link>
         <h1>Корзина</h1>
         <p v-if="!cart_data.length">В корзине нет товаров...</p>
@@ -13,7 +13,7 @@
             @increment = "incItem(index)"
             @decrement = "decItem(index)"
         />
-        <div class="v-cart__total">
+        <div class="v-cart__total rds2">
             <p class="v-cart__name">Итого: </p>
             <p>{{cartTotalCost}} руб.</p>
         </div>
@@ -52,7 +52,6 @@ export default {
         },
         deleteFromCart(index) {
             this.DELETE_FROM_CART(index);
-            console.log(index)
         }
     },
     computed:{
@@ -64,7 +63,6 @@ export default {
                     summa += item.price * item.quantity;
                 });
             }
-
             return summa;
         }
 

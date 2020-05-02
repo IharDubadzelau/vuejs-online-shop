@@ -1,12 +1,12 @@
 <template>
     <div class="v-catalog">
         <router-link :to="{name: 'cart', params: {cart_data: CART}}">
-            <div class="v-catalog__link_to_cart">
+            <div class="v-catalog__link_to_cart rds">
                 корзина: {{CART.length}}
             </div>
         </router-link>
 
-        <h1>Catalog</h1>
+        <h1>Каталог товаров</h1>
 
         <div class="filters">
             <v-select

@@ -6,5 +6,37 @@
   color: $clr-txt;
   border: 0;
   border-radius: $radius;
-  box-shadow: 0 0 8px 0 #e0e0e0;
+  box-shadow: 0 0 8px 0 $clr-shadow;
+  cursor: pointer;
+}
+
+.btn-info {
+  padding: $padding $padding*2;
+  background: $clr-info;
+  color: $clr-cnx;
+  border: 0;
+  border-radius: $radius;
+  box-shadow: 0 0 8px 0 $clr-shadow;
+  right: 5px;
+  cursor: pointer;
+}
+
+.btn-cls {
+  padding: $padding $padding*2;
+  background: $clr-cnl;
+  color: $clr-txt;
+  border: 0;
+  border-radius: $radius;
+  box-shadow: 0 0 8px 0 $clr-shadow;
+  cursor: pointer;
+}
+
+.rds {
+  border-radius: $radius;
+  box-shadow: 0 0 4px 0 $clr-shadow;
+}
+
+.rds2 {
+  border-radius: $radius*2;
+  box-shadow: 0 0 8px 0 $clr-shadow;
 }

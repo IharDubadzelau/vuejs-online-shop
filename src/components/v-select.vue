@@ -1,11 +1,11 @@
 <template>
     <div class="v-select">
         <p
-                class="title"
+                class="title rds"
                 @click="areOptionsVisible = !areOptionsVisible"
         >{{selected}}</p>
         <div
-                class="options"
+                class="options rds"
                 v-if="areOptionsVisible || isExpanded"
         >
             <p
