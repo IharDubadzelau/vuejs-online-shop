@@ -16,22 +16,27 @@ let store = new Vuex.Store( {
             state.products = products;
         }),
         SET_CART: (state, product) => {
-
-            let isExistProduct = false;
-
             if (state.cart.length) {
-                state.cart.map( item => {
-                   if ( item.article === product.article ) {
-                       item.quantity++;
-                       isExistProduct = true;
-                   }
-                });
-            }
-
-            if ( !isExistProduct ) {
-                state.cart.push(product);
+                let isProductExists = false;
+                state.cart.map(function (item) {
+                    if (item.article === product.article) {
+                        isProductExists = true;
+                        item.quantity++
+                    }
+                })
+                if (!isProductExists) {
+                    state.cart.push(product)
+                }
+            } else {
+                state.cart.push(product)
             }
         },
+        CHANGE_COUNT_ITEM: ((state, obj) => {
+            state.cart[obj.index].quantity += obj.count;
+            if ( state.cart[obj.index].quantity<1 ) {
+                state.cart[obj.index].quantity = 1;
+            }
+        }),
         REMOVE_FROM_CART: (state, index) => {
             state.cart.splice(index,1);
         }
@@ -53,6 +58,12 @@ let store = new Vuex.Store( {
         },
         ADD_TO_CART({commit}, product) {
             commit('SET_CART', product);
+        },
+        INC_CART_ITEM({commit}, index){
+            commit('CHANGE_COUNT_ITEM', { index: index, count: 1});
+        },
+        DEC_CART_ITEM({commit}, index){
+            commit('CHANGE_COUNT_ITEM', { index: index, count: -1});
         },
         DELETE_FROM_CART({commit}, index) {
             commit('REMOVE_FROM_CART',index);

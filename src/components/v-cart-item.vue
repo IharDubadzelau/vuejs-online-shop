@@ -15,7 +15,11 @@
 
        <div class="v-cart-item__quantity">
            <p>кол-во:</p>
-           {{cart_item_data.quantity}}
+           <span>
+               <span class="quantity_btn" @click="decItem">-</span>
+               {{cart_item_data.quantity}}
+               <span class="quantity_btn" @click="incItem">+</span>
+           </span>
        </div>
 
        <button @click="deleteFromCart">Delete</button>
@@ -23,6 +27,7 @@
 </template>
 
 <script>
+
     export default {
         name: "v-cart-item",
         props: {
@@ -39,6 +44,12 @@
         },
         computed: {},
         methods: {
+            incItem() {
+                this.$emit('increment');
+            },
+            decItem() {
+                this.$emit('decrement');
+            },
             deleteFromCart() {
                 this.$emit('deleteFromCart');
             }
@@ -60,6 +71,9 @@
         margin-bottom: $margin*2;
         &__image {
             max-width: 50px;
+        }
+        .quantity_btn {
+            cursor: pointer;
         }
     }
 </style>
