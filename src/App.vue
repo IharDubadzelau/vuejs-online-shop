@@ -1,20 +1,38 @@
 <template>
   <div id="app">
-    <p>Hello Vue CLI !!!</p>
-
     <v-main-wrapper></v-main-wrapper>
   </div>
 </template>
 
 <script>
-import vMainWrapper from './components/v-main-wrapper'
-
+import vMainWrapper from './components/v-main-wrapper';
+import {mapActions, mapGetters} from 'vuex'
 
 
 export default {
   name: 'App',
   components: {
     vMainWrapper
+  },
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapGetters([
+            'IS_MOBILE',
+            'IS_DESKTOP'
+    ])
+  },
+  methods: {
+    ...mapActions([
+            'SET_MOBILE',
+            'SET_DESKTOP'
+    ])
+  },
+  mounted() {
+    window.addEventListener('resize', () => {
+      window.innerWidth > 767 ? this.SET_DESKTOP() : this.SET_MOBILE();
+    });
   }
 }
 
@@ -25,7 +43,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align : center;
   color: #2c3e50;
   margin-top: 60px;
 }
