@@ -2,7 +2,7 @@
    <div class="v-cart-item">
        <img
                class="v-cart-item__image"
-               :src=" require('../assets/images/' + cart_item_data.image)"
+               :src=" require('../../assets/images/' + cart_item_data.image)"
                alt="img"
        >
        <div
